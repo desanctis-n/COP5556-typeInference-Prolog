@@ -42,6 +42,10 @@ test(mockedFct, [nondet]) :-
     assertion(X==int), assertion(T==float). % make sure the types infered are correct
 
 % ~~~~~~~~~~~~~~~~ BEGIN MY TESTS ~~~~~~~~~~~~~~~~~
+% I'm using `nondet` in many of these cases as suggested to avoid swipl complaining about choicepoint coverage.
+% theoretically I think I could fix many of these with some slick use of the bang operator but I cannot be bothered
+% instead, let's just get it to shut up
+% the README doesn't suggest that the code needs to be optimal, so it's probably fine
 
 % typeExp infers integer addition as int
 test(typeExp_iplus_T, [true(T == int)]) :-
