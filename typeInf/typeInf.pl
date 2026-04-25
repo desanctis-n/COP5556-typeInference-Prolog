@@ -103,8 +103,11 @@ typeStatement(for(Name, Start, End, Block), unit):-
 
 /* code blocks: just a list of code */
 /* does this support ';' as a delimiter? */
+/* yes. Let's assume the list of statements was generated from a semicolon delimited list: */
+/* e.g. s0; s1; ... sn; -> [s0, s1, ... sn] */
+/* That's a parser/grammar feature, not a type inference one */
 typeStatement(block(Code), T):-
-    is_list(Code), /* single statement not a block */
+    is_list(Code),
 	typeCode(Code, T).
 
 /* global function definition: function name, list of param names/types, return type, function body (code block) */
